@@ -4,7 +4,7 @@
 public class RetractorManager : MonoBehaviour
 {
     public float maximumTimeForAttachment = 1f;
-    GameObject attachedObject = null;
+    bool isAttached = false;
     Rigidbody2D rb;
 
     void Awake()
@@ -15,7 +15,7 @@ public class RetractorManager : MonoBehaviour
 
     void DestroyIfNoAttach()
     {
-        if (attachedObject == null)
+        if (!isAttached)
         {
             Destroy(gameObject);
         }
@@ -23,20 +23,27 @@ public class RetractorManager : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        AttachByCollision(collision);
+        if (!isAttached && collision.collider.GetComponent<Rigidbody2D>() != null)
+        {
+            isAttached = true;
+            AttachByCollision(collision);
+        }
     }
 
     private void AttachByCollision(Collision2D collision)
     {
-        rb.simulated = false;
-        attachedObject = collision.collider.gameObject;
-        transform.SetParent(attachedObject.transform);
-        transform.position = collision.contacts[0].point;
         Vector2 normal = collision.contacts[0].normal;
+        transform.position = collision.contacts[0].point;
+        transform.rotation = Quaternion.FromToRotation(Vector2.up, normal);
+
+        FixedJoint2D fixedJoint = GetComponent<FixedJoint2D>();
+        fixedJoint.connectedBody = collision.collider.GetComponent<Rigidbody2D>();
+        fixedJoint.connectedAnchor = collision.collider.transform.InverseTransformPoint(collision.contacts[0].point);
+        fixedJoint.enabled = true;
+
+        transform.position = collision.contacts[0].point;
         transform.rotation = Quaternion.FromToRotation(Vector2.up, normal);
     }
 
-    internal bool IsAttached() => attachedObject != null;
-
-    internal GameObject GetAttachedObject() => attachedObject;
+    internal bool IsAttached() => isAttached;
 }

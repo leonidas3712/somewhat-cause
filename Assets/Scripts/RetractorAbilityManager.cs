@@ -27,8 +27,8 @@ public class RetractorAbilityManager : MonoBehaviour
             return;
         }
         // Both retractors are attached.
-        Rigidbody2D rb1 = retractor1.GetAttachedObject().GetComponent<Rigidbody2D>();
-        Rigidbody2D rb2 = retractor2.GetAttachedObject().GetComponent<Rigidbody2D>();
+        Rigidbody2D rb1 = retractor1.GetComponent<Rigidbody2D>();
+        Rigidbody2D rb2 = retractor2.GetComponent<Rigidbody2D>();
         if (rb1 == null || rb2 == null)
         {
             Debug.LogError("NO RIGIDBODY");
@@ -37,6 +37,7 @@ public class RetractorAbilityManager : MonoBehaviour
         Vector2 force = refractorPullPower * (retractor2.transform.position - retractor1.transform.position).normalized;
         rb1.AddForce(force, ForceMode2D.Force);
         rb2.AddForce(-force, ForceMode2D.Force);
+        Debug.Log("aa");
     }
 
     void SetRetractor()
