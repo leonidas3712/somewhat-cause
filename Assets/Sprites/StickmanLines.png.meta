@@ -1,7 +1,13 @@
 fileFormatVersion: 2
 guid: 05069727369ff6840acb317e1f708f15
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 8050007514894930316
+    second: StickmanLines_0
+  - first:
+      213: -5918419180856882146
+    second: StickmanLines_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 150
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -63,7 +69,19 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -72,7 +90,115 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: StickmanLines_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 332
+        width: 83
+        height: 330
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 41.5, y: 138}
+        - {x: 37.5, y: 147}
+        - {x: 27.5, y: 157}
+        - {x: 26.5, y: 157}
+        - {x: 24.5, y: 160}
+        - {x: 15.5, y: 164}
+        - {x: 13.5, y: 164}
+        - {x: 12.5, y: 165}
+        - {x: -8.5, y: 165}
+        - {x: -14.5, y: 164}
+        - {x: -23.5, y: 160}
+        - {x: -25.5, y: 157}
+        - {x: -26.5, y: 157}
+        - {x: -33.5, y: 150}
+        - {x: -33.5, y: 149}
+        - {x: -36.5, y: 147}
+        - {x: -40.5, y: 138}
+        - {x: -41.5, y: 132}
+        - {x: -41.5, y: -133}
+        - {x: -40.5, y: -139}
+        - {x: -36.5, y: -148}
+        - {x: -33.5, y: -150}
+        - {x: -33.5, y: -151}
+        - {x: -26.5, y: -159}
+        - {x: -13.5, y: -165}
+        - {x: 14.5, y: -165}
+        - {x: 27.5, y: -159}
+        - {x: 35.5, y: -151}
+        - {x: 41.5, y: -138}
+      tessellationDetail: 1
+      bones: []
+      spriteID: f09c51e1c5018f64a82b212a5f5749f1
+      internalID: 8050007514894930316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanLines_1
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 0
+        width: 83
+        height: 662
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 24.5, y: -324}
+        - {x: 25.5, y: -324}
+        - {x: 34.5, y: -315}
+        - {x: 34.5, y: -314}
+        - {x: 36.5, y: -313}
+        - {x: 40.5, y: -304}
+        - {x: 41.5, y: -298}
+        - {x: 41.5, y: 298}
+        - {x: 40.5, y: 304}
+        - {x: 36.5, y: 313}
+        - {x: 26.5, y: 323}
+        - {x: 25.5, y: 323}
+        - {x: 23.5, y: 326}
+        - {x: 14.5, y: 330}
+        - {x: 12.5, y: 330}
+        - {x: 11.5, y: 331}
+        - {x: -9.5, y: 331}
+        - {x: -15.5, y: 330}
+        - {x: -24.5, y: 326}
+        - {x: -26.5, y: 323}
+        - {x: -27.5, y: 323}
+        - {x: -34.5, y: 316}
+        - {x: -34.5, y: 315}
+        - {x: -37.5, y: 313}
+        - {x: -41.5, y: 304}
+        - {x: -41.5, y: -304}
+        - {x: -37.5, y: -313}
+        - {x: -34.5, y: -315}
+        - {x: -34.5, y: -316}
+        - {x: -26.5, y: -324}
+        - {x: -25.5, y: -324}
+        - {x: -24.5, y: -326}
+        - {x: -15.5, y: -330}
+        - {x: -9.5, y: -331}
+        - {x: 8.5, y: -331}
+        - {x: 14.5, y: -330}
+        - {x: 23.5, y: -326}
+      tessellationDetail: 1
+      bones: []
+      spriteID: 8b1184c0dd401ca4d99e10184b36ee35
+      internalID: -5918419180856882146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
