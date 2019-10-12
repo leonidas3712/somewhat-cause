@@ -13,7 +13,8 @@ public class RetractorAbilityManager : MonoBehaviour
 
     // User inputs
     Vector3 mousePosition;
-    bool setRetractorInput = false;
+    bool setRetractor1 = false;
+    bool setRetractor2 = false;
     bool useRetractorInput = false;
 
     void UseRetractor()
@@ -39,26 +40,31 @@ public class RetractorAbilityManager : MonoBehaviour
         rb2.AddForce(-force, ForceMode2D.Force);
     }
 
-    void SetRetractor()
+    void SetRetractor(int retractorToSet)
     {
         RetractorManager createdRetractor;
-        if (retractor1 == null)
+        if (retractorToSet == 1)
         {
+            if (retractor1 != null)
+            {
+                Destroy(retractor1.gameObject);
+            }
+            if (retractor2 != null)
+            {
+                Destroy(retractor2.gameObject);
+            }
             createdRetractor = retractor1 = Instantiate(retractorPrefab);
         }
         else
         {
-            if (retractor2 == null)
+            if (retractor2 != null)
             {
-                createdRetractor = retractor2 = Instantiate(retractorPrefab);
-                Physics2D.IgnoreCollision(retractor1.GetComponent<Collider2D>(), retractor2.GetComponent<Collider2D>());
-            }
-            else
-            {
-                Destroy(retractor1.gameObject);
                 Destroy(retractor2.gameObject);
-                createdRetractor = retractor1 = Instantiate(retractorPrefab);
-                retractor2 = null;
+            }
+            createdRetractor = retractor2 = Instantiate(retractorPrefab);
+            if (retractor1 != null)
+            {
+                Physics2D.IgnoreCollision(retractor1.GetComponent<Collider2D>(), retractor2.GetComponent<Collider2D>());
             }
         }
         createdRetractor.transform.position = transform.position;
@@ -76,9 +82,13 @@ public class RetractorAbilityManager : MonoBehaviour
     {
         mousePosition = Input.mousePosition;
         useRetractorInput = Input.GetButton("UseRetractor");
-        if (Input.GetButtonDown("SetRetractor"))
+        if (Input.GetMouseButtonDown(0))
         {
-            setRetractorInput = true;
+            setRetractor1 = true;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            setRetractor2 = true;
         }
     }
 
@@ -88,10 +98,18 @@ public class RetractorAbilityManager : MonoBehaviour
         {
             UseRetractor();
         }
-        else if (setRetractorInput)
+        else
         {
-            setRetractorInput = false;
-            SetRetractor();
+            if (setRetractor1)
+            {
+                setRetractor1 = false;
+                SetRetractor(1);
+            }
+            if (setRetractor2)
+            {
+                setRetractor2 = false;
+                SetRetractor(2);
+            }
         }
     }
 }
