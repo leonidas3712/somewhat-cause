@@ -37,4 +37,6 @@ public class RetractorManager : MonoBehaviour
     }
 
     internal bool IsAttached() => attachedObject != null;
+
+    internal GameObject GetAttachedObject() => attachedObject;
 }

@@ -5,11 +5,11 @@ public class RetractorAbilityManager : MonoBehaviour
     public Collider2D playerCollider;
     public RetractorManager retractorPrefab;
     float retractorThrowPower = 2f;
+    float refractorPullPower = 100f;
 
 
     RetractorManager retractor1 = null;
     RetractorManager retractor2 = null;
-    float ropeLength = 1000f; // TODO temporary inital length, remove this later, and set it to the initial length after setting the retractors.
 
     // User inputs
     Vector3 mousePosition;
@@ -18,7 +18,25 @@ public class RetractorAbilityManager : MonoBehaviour
 
     void UseRetractor()
     {
-        // TODO
+        if (retractor1 == null || retractor2 == null)
+        {
+            return;
+        }
+        if (!retractor1.IsAttached() || !retractor2.IsAttached())
+        {
+            return;
+        }
+        // Both retractors are attached.
+        Rigidbody2D rb1 = retractor1.GetAttachedObject().GetComponent<Rigidbody2D>();
+        Rigidbody2D rb2 = retractor2.GetAttachedObject().GetComponent<Rigidbody2D>();
+        if (rb1 == null || rb2 == null)
+        {
+            Debug.LogError("NO RIGIDBODY");
+            return;
+        }
+        Vector2 force = refractorPullPower * (retractor2.transform.position - retractor1.transform.position).normalized;
+        rb1.AddForce(force, ForceMode2D.Force);
+        rb2.AddForce(-force, ForceMode2D.Force);
     }
 
     void SetRetractor()
@@ -57,13 +75,10 @@ public class RetractorAbilityManager : MonoBehaviour
     void Update()
     {
         mousePosition = Input.mousePosition;
+        useRetractorInput = Input.GetButton("UseRetractor");
         if (Input.GetButtonDown("SetRetractor"))
         {
             setRetractorInput = true;
-        }
-        if (Input.GetButtonDown("UseRetractor"))
-        {
-            useRetractorInput = true;
         }
     }
 
@@ -71,7 +86,6 @@ public class RetractorAbilityManager : MonoBehaviour
     {
         if (useRetractorInput)
         {
-            useRetractorInput = false;
             UseRetractor();
         }
         else if (setRetractorInput)
