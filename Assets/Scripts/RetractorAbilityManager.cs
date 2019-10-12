@@ -27,6 +27,7 @@ public class RetractorAbilityManager : MonoBehaviour
         {
             return;
         }
+
         // Both retractors are attached.
         Rigidbody2D rb1 = retractor1.GetComponent<Rigidbody2D>();
         Rigidbody2D rb2 = retractor2.GetComponent<Rigidbody2D>();
@@ -94,22 +95,19 @@ public class RetractorAbilityManager : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (setRetractor1)
+        {
+            setRetractor1 = false;
+            SetRetractor(1);
+        }
+        if (setRetractor2)
+        {
+            setRetractor2 = false;
+            SetRetractor(2);
+        }
         if (useRetractorInput)
         {
             UseRetractor();
-        }
-        else
-        {
-            if (setRetractor1)
-            {
-                setRetractor1 = false;
-                SetRetractor(1);
-            }
-            if (setRetractor2)
-            {
-                setRetractor2 = false;
-                SetRetractor(2);
-            }
         }
     }
 }
