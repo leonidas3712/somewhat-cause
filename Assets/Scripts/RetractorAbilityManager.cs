@@ -28,8 +28,8 @@ public class RetractorAbilityManager : MonoBehaviour
             return;
         }
         // Both retractors are attached.
-        Rigidbody2D rb1 = retractor1.GetAttachedObject().GetComponent<Rigidbody2D>();
-        Rigidbody2D rb2 = retractor2.GetAttachedObject().GetComponent<Rigidbody2D>();
+        Rigidbody2D rb1 = retractor1.GetComponent<Rigidbody2D>();
+        Rigidbody2D rb2 = retractor2.GetComponent<Rigidbody2D>();
         if (rb1 == null || rb2 == null)
         {
             Debug.LogError("NO RIGIDBODY");
