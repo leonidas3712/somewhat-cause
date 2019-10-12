@@ -7,6 +7,8 @@ public class RetractorManager : MonoBehaviour
     bool isAttached = false;
     Rigidbody2D rb;
 
+    RetractorAbilityManager abilityManager;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,7 +29,20 @@ public class RetractorManager : MonoBehaviour
         {
             isAttached = true;
             AttachByCollision(collision);
+            if (abilityManager != null)
+            {
+                abilityManager.OnRetractorAttach();
+            }
+            else
+            {
+                Debug.LogError("Ability manager is null!");
+            }
         }
+    }
+
+    internal void SetAbilityManager(RetractorAbilityManager abilityManager)
+    {
+        this.abilityManager = abilityManager;
     }
 
     private void AttachByCollision(Collision2D collision)
