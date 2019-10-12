@@ -27,27 +27,27 @@ public class PlayerController : MonoBehaviour
 
     private void Walk()
     {
-        if (walkingDir > 0)
-        {
-            if (rb.velocity.x > 0)
-            {
-                if (rb.velocity.x < maxWalkingSpeed)
-                    rb.AddForce(Vector2.right * acceleration * walkingDir);
-            }
-            else
-                rb.AddForce(Vector2.right * acceleration * walkingDir);
-        }
-        if (walkingDir < 0)
-        {
-            if (rb.velocity.x < 0)
-            {
-                if (rb.velocity.x > -maxWalkingSpeed)
-                    rb.AddForce(Vector2.right * acceleration * walkingDir);
-            }
-            else
-                rb.AddForce(Vector2.right * acceleration * walkingDir);
-        }
-
+        /* if (walkingDir > 0)
+         {
+             if (rb.velocity.x > 0)
+             {
+                 if (rb.velocity.x < maxWalkingSpeed)
+                     rb.AddForce(Vector2.right * acceleration * walkingDir);
+             }
+             else
+                 rb.AddForce(Vector2.right * acceleration * walkingDir);
+         }
+         if (walkingDir < 0)
+         {
+             if (rb.velocity.x < 0)
+             {
+                 if (rb.velocity.x > -maxWalkingSpeed)
+                     rb.AddForce(Vector2.right * acceleration * walkingDir);
+             }
+             else
+                 rb.AddForce(Vector2.right * acceleration * walkingDir);
+         }*/
+        rb.velocity = new Vector2(maxWalkingSpeed*walkingDir,rb.velocity.y);
     }
     void Jump()
     {
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
             {
                 jumping = false;
                 if (rb.velocity.y > 0)
-                    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 3);
+                    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
             }
         }
 
