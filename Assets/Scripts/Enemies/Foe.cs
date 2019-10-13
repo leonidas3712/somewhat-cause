@@ -16,7 +16,7 @@ public class Foe : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        layerMask = ~(LayerMask.GetMask("enemies"));
+        layerMask = ~(LayerMask.GetMask("enemies","bullets","retractor"));
         player = GameObject.Find("Player");
         particleSystem.SetActive(false);
     }
@@ -24,6 +24,7 @@ public class Foe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SearchForPlayer();
         playerDir = player.transform.position - transform.position;
         particleSystem.transform.rotation = Quaternion.Euler(Mathf.Atan2(playerDir.y, playerDir.x) * Mathf.Rad2Deg * -1,90,0);
          
@@ -40,15 +41,17 @@ public class Foe : MonoBehaviour
                 StopShooting();
             }
         }
-        else SearchForPlayer();
     }
 
     void SearchForPlayer()
     {
+        playerSighted = false;
         RaycastHit2D playerSight = Physics2D.Raycast(transform.position, player.transform.position - transform.position, sightRange, layerMask);
         if (playerSight.collider)
             if (playerSight.collider.tag == "Player") playerSighted = true;
+
     }
+    
     public void StartShooting()
     {
         if (!particleSystem.activeSelf) particleSystem.SetActive(true);

@@ -9,7 +9,14 @@ public class PlayerController : MonoBehaviour
     float walkingDir;
     bool jumping;
     Rigidbody2D rb;
+    int hp =10;
 
+    public void TakeDamage()
+    {
+        hp--;
+        if (hp <= 0) Destroy(gameObject);
+        //die
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
