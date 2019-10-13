@@ -40,6 +40,7 @@ public class ExplosivesContainer : MonoBehaviour
                     objectRb.AddForce(-hit.normal * explosionForce, ForceMode2D.Impulse);
                 }
             }
+            Destroy( Instantiate(Resources.Load("Explooosion"),transform.position, Quaternion.Euler(Vector3.zero)),1);
             Destroy(gameObject);
         }
     }
