@@ -16,6 +16,7 @@ public class RetractorAbilityManager : MonoBehaviour
 
     void Start()
     {
+        playerCollider = GetComponent<Collider2D>();
         currentPair = 0;
         for(int i = 0; i < retractorPairs.Length; i++)
         {
