@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RetractorAbilityManager : MonoBehaviour
 {
@@ -35,6 +34,7 @@ public class RetractorAbilityManager : MonoBehaviour
         if (retractorsDistance < ropeLength)
         {
             ropeLength -= ropePullRatio * refractorPullPower * Time.fixedDeltaTime;
+            ropeLength = Mathf.Max(ropeLength, 0f);
         }
         // This is checked again on purpose! Keep it like that!
         if (retractorsDistance < ropeLength)
@@ -56,7 +56,7 @@ public class RetractorAbilityManager : MonoBehaviour
 
     private float CalculateRetractorsDistance()
     {
-        return (retractor1.transform.position - retractor2.transform.position).magnitude;
+        return Mathf.Abs((retractor1.transform.position - retractor2.transform.position).magnitude);
     }
 
     internal void OnRetractorAttach()
@@ -71,7 +71,7 @@ public class RetractorAbilityManager : MonoBehaviour
         distanceJoint.distance = ropeLength;
         distanceJoint.connectedBody = retractor2.GetComponent<Rigidbody2D>();
         lineRenderer = retractor2.gameObject.AddComponent<LineRenderer>();
-        lineRenderer.startWidth = maximumLineWidth*1.5f;
+        lineRenderer.startWidth = maximumLineWidth * 1.5f;
         lineRenderer.material = lineMaterial;
         lineRenderer.endColor = lineRenderer.startColor = Color.black;
         lineRenderer.enabled = true;
