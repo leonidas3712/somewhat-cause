@@ -48,7 +48,7 @@ public class RetractorAbilityManager : MonoBehaviour
             Vector2 force = refractorPullPower * (retractor2.transform.position - retractor1.transform.position).normalized;
             rb1.AddForce(force, ForceMode2D.Force);
             rb2.AddForce(-force, ForceMode2D.Force);
-            ropeLength = CalculateRetractorsDistance();
+            ropeLength = Mathf.Min(ropeLength, CalculateRetractorsDistance());
         }
         DistanceJoint2D distanceJoint = retractor1.gameObject.GetComponent<DistanceJoint2D>();
         distanceJoint.distance = ropeLength;
