@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     float walkingDir;
     bool jumping;
     Rigidbody2D rb;
-    int hp =10;
+    int hp = 10;
 
     public void TakeDamage()
     {
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
 
     private void Walk()
     {
-        if (Mathf.Abs(rb.velocity.x) <= maxWalkingSpeed)
+        if (Mathf.Abs(rb.velocity.x) <= maxWalkingSpeed * 2)
         {
             rb.velocity = new Vector2(maxWalkingSpeed * walkingDir, rb.velocity.y);
         }
