@@ -3617,12 +3617,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023179ae91f248248b819d8df53a4ddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   playerCollider: {fileID: 2075141007}
   retractorPrefab: {fileID: 6463194892299031315, guid: cc8f7abd754c2dc40b5eaaf87d748533,
     type: 3}
-  ropePullRatio: 0.2
-  refractorPullPower: 200
 --- !u!114 &2075141012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3695,7 +3692,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0013418794, y: -0.45078078}
+  m_Offset: {x: -0.0013418794, y: -0.47}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
