@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            if (grounded)
+            if (GroundDetection.grounded)
             {
                 jumping = true;
                 rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
