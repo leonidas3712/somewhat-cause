@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/LevelsAndScenes/EndOfGameScene.unity
     guid: 7503bd5adf8b41e47aaecb0c071176ed
+  - enabled: 1
+    path: Assets/LevelsAndScenes/RandomScene.unity
+    guid: c5575bb511ef5f44f95a78e0e2a54871
   m_configObjects: {}

@@ -10,6 +10,7 @@ public class MainMenuButtons : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene("Level1Scene");
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.buildIndex + 1);
     }
 }
