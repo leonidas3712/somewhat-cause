@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6235759267350823549}
   - component: {fileID: 6247389476152211327}
   - component: {fileID: 3862114586584900536}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RetractorObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
