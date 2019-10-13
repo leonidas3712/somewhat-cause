@@ -3460,5 +3460,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 10
-  maxWalkingSpeed: 5
+  maxWalkingSpeed: 15
   jumpSpeed: 30
