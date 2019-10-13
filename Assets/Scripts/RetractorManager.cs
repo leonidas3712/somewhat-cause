@@ -3,24 +3,15 @@
 [RequireComponent(typeof(Rigidbody2D), typeof(FixedJoint2D))]
 public class RetractorManager : MonoBehaviour
 {
-    public float maximumTimeForAttachment = 1f;
+    public Material lineMaterial;
     bool isAttached = false;
     Rigidbody2D rb;
 
-    RetractorAbilityManager abilityManager;
+    PairOfRetractorsManager pairOfRetractorsManager;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        Invoke("DestroyIfNoAttach", maximumTimeForAttachment);
-    }
-
-    void DestroyIfNoAttach()
-    {
-        if (!isAttached)
-        {
-            Destroy(gameObject);
-        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -29,20 +20,20 @@ public class RetractorManager : MonoBehaviour
         {
             isAttached = true;
             AttachByCollision(collision);
-            if (abilityManager != null)
+            if (pairOfRetractorsManager != null)
             {
-                abilityManager.OnRetractorAttach();
+                pairOfRetractorsManager.OnRetractorAttach(lineMaterial);
             }
             else
             {
-                Debug.LogError("Ability manager is null!");
+                Debug.LogError("pairOfRetractorsManager is null!", this);
             }
         }
     }
 
-    internal void SetAbilityManager(RetractorAbilityManager abilityManager)
+    internal void SetPairOfRetractors(PairOfRetractorsManager pairOfRetractors)
     {
-        this.abilityManager = abilityManager;
+        this.pairOfRetractorsManager = pairOfRetractors;
     }
 
     private void AttachByCollision(Collision2D collision)
