@@ -13,4 +13,9 @@ public class MainMenuButtons : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.buildIndex + 1);
     }
+
+    public void Sandbox()
+    {
+        SceneManager.LoadScene("RandomScene");
+    }
 }
