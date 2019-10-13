@@ -3,7 +3,7 @@
 public class PairOfRetractorsManager
 {
     readonly float retractorThrowPower = 2f;
-    readonly float refractorPullPower = 200f;
+    readonly float retractorPullPower = 200f;
     readonly float ropePullRatio = 0.2f;
     float ropeLength = -1;
     LineRenderer lineRenderer;
@@ -23,7 +23,7 @@ public class PairOfRetractorsManager
         bool useForces = true;
         if (retractorsDistance < ropeLength)
         {
-            ropeLength -= ropePullRatio * refractorPullPower * Time.fixedDeltaTime;
+            ropeLength -= ropePullRatio * retractorPullPower * Time.fixedDeltaTime;
             ropeLength = Mathf.Max(ropeLength, 0f);
         }
         // This is checked again on purpose! Keep it like that!
@@ -35,7 +35,7 @@ public class PairOfRetractorsManager
         {
             Rigidbody2D rb1 = retractor1.GetComponent<Rigidbody2D>();
             Rigidbody2D rb2 = retractor2.GetComponent<Rigidbody2D>();
-            Vector2 force = refractorPullPower * (retractor2.transform.position - retractor1.transform.position).normalized;
+            Vector2 force = retractorPullPower * (retractor2.transform.position - retractor1.transform.position).normalized;
             rb1.AddForce(force, ForceMode2D.Force);
             rb2.AddForce(-force, ForceMode2D.Force);
             ropeLength = Mathf.Min(ropeLength, CalculateRetractorsDistance());
