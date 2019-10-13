@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float acceleration, maxWalkingSpeed, jumpSpeed;
     float walkingDir;
-    bool grounded = true, jumping;
+    bool jumping;
     Rigidbody2D rb;
 
     void Start()
@@ -27,26 +27,6 @@ public class PlayerController : MonoBehaviour
 
     private void Walk()
     {
-        /* if (walkingDir > 0)
-         {
-             if (rb.velocity.x > 0)
-             {
-                 if (rb.velocity.x < maxWalkingSpeed)
-                     rb.AddForce(Vector2.right * acceleration * walkingDir);
-             }
-             else
-                 rb.AddForce(Vector2.right * acceleration * walkingDir);
-         }
-         if (walkingDir < 0)
-         {
-             if (rb.velocity.x < 0)
-             {
-                 if (rb.velocity.x > -maxWalkingSpeed)
-                     rb.AddForce(Vector2.right * acceleration * walkingDir);
-             }
-             else
-                 rb.AddForce(Vector2.right * acceleration * walkingDir);
-         }*/
         rb.velocity = new Vector2(maxWalkingSpeed*walkingDir,rb.velocity.y);
     }
     void Jump()
