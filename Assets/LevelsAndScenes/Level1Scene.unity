@@ -887,7 +887,7 @@ GameObject:
   - component: {fileID: 682515664}
   - component: {fileID: 682515663}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: StickmanHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3446,7 +3446,8 @@ MonoBehaviour:
   playerCollider: {fileID: 2075141007}
   retractorPrefab: {fileID: 6463194892299031315, guid: cc8f7abd754c2dc40b5eaaf87d748533,
     type: 3}
-  ropePullRatio: 0.1
+  ropePullRatio: 0.2
+  refractorPullPower: 200
 --- !u!114 &2075141012
 MonoBehaviour:
   m_ObjectHideFlags: 0

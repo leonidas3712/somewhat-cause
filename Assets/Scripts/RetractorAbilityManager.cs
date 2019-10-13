@@ -5,9 +5,9 @@ public class RetractorAbilityManager : MonoBehaviour
     public Material lineMaterial;
     public Collider2D playerCollider;
     public RetractorManager retractorPrefab;
-    public float ropePullRatio = 0.1f;
+    public float ropePullRatio = 0.2f;
+    public float refractorPullPower = 200f;
     readonly float retractorThrowPower = 2f;
-    readonly float refractorPullPower = 100f;
     float ropeLength = -1;
     readonly float minimumLineWidth = 0.1f;
     readonly float maximumLineWidth = 0.2f;
