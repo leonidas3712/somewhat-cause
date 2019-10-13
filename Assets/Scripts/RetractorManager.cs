@@ -18,8 +18,8 @@ public class RetractorManager : MonoBehaviour
     {
         if (!isAttached && collision.collider.GetComponent<Rigidbody2D>() != null)
         {
-            isAttached = true;
             AttachByCollision(collision);
+            isAttached = true;
             if (pairOfRetractorsManager != null)
             {
                 pairOfRetractorsManager.OnRetractorAttach(lineMaterial);
@@ -27,6 +27,17 @@ public class RetractorManager : MonoBehaviour
             else
             {
                 Debug.LogError("pairOfRetractorsManager is null!", this);
+            }
+        }
+    }
+
+    void Update()
+    {
+        if (isAttached)
+        {
+            if (GetComponent<FixedJoint2D>().connectedBody == null)
+            {
+                Destroy(gameObject);
             }
         }
     }

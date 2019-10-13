@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    float acceleration, maxWalkingSpeed, jumpSpeed;
+    float maxWalkingSpeed, jumpSpeed;
     float walkingDir;
     bool jumping;
     Rigidbody2D rb;
@@ -17,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        walkingDir = Input.GetAxis("Horizontal");
+        walkingDir = Input.GetAxisRaw("Horizontal");
         Jump();
     }
     private void FixedUpdate()
@@ -27,7 +25,10 @@ public class PlayerController : MonoBehaviour
 
     private void Walk()
     {
-        rb.velocity = new Vector2(maxWalkingSpeed*walkingDir,rb.velocity.y);
+        if (Mathf.Abs(rb.velocity.x) <= maxWalkingSpeed)
+        {
+            rb.velocity = new Vector2(maxWalkingSpeed * walkingDir, rb.velocity.y);
+        }
     }
     void Jump()
     {
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour
             if (GroundDetection.grounded)
             {
                 jumping = true;
-                rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + jumpSpeed);
             }
         }
         if (Input.GetButtonUp("Jump"))
